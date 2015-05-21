@@ -1,0 +1,3 @@
+/*! Compiled on: Thu May 21 2015 08:13:23 */
+var fileVersion = "v1.0-4-f842d9e-dirty"; 
+"use strict";define(["modules/app"],function(app){app.directiveManager("customScroll",function($compile,$http,$timeout){return{restrict:"A",link:function($scope,element){$(element).mCustomScrollbar("destroy"),$timeout(function(){$(element).mCustomScrollbar({theme:"dark-3",scrollButtons:{enable:!0},scrollInertia:100})},500)}}})});

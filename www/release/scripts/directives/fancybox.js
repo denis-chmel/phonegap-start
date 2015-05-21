@@ -1,0 +1,3 @@
+/*! Compiled on: Thu May 21 2015 08:13:23 */
+var fileVersion = "v1.0-4-f842d9e-dirty"; 
+"use strict";define(["modules/app"],function(app){app.directiveManager("fancybox",function(){return{restrict:"A",controller:function($scope,$element,$attrs){$scope.dishGallery=function(dish,image_index){var images=[];angular.forEach(dish.restaurant.images,function(image){images.push(image.url)}),$.fancybox.open(images,{padding:0,centerOnScroll:!0,title:"<h1>"+$attrs.title+"</h1> These are user generated photos from Yelp and Foursquare. They are not necessarily of the recommended dish, but should help you get a feel for this restaurant.",minWidth:320,helpers:{overlay:{css:{background:"rgba(0, 0, 0, 0.4)"}},title:{type:"outside"}},type:"image",index:image_index})}}}})});

@@ -1,0 +1,3 @@
+/*! Compiled on: Thu May 21 2015 08:13:23 */
+var fileVersion = "v1.0-4-f842d9e-dirty"; 
+"use strict";define(["modules/app"],function(app){app.directiveManager("fancyCheck",["$timeout",function($timeout){return{restrict:"A",link:function($scope,element,$attrs){$timeout(function(){$scope.visual=$('<div class="fancy-check"><span></span></div>'),$scope.visual.addClass($attrs.type),$(element).addClass("hidden").after($scope.visual)})}}}])});

@@ -1,0 +1,3 @@
+/*! Compiled on: Thu May 21 2015 08:13:23 */
+var fileVersion = "v1.0-4-f842d9e-dirty"; 
+"use strict";define(["ordersFactory"],function(){function getIncompleteOrder(){function loader($q,ordersFactory){var defer=$q.defer();return ordersFactory.getIncomplete().then(function(order){defer.resolve(order)},function(){defer.resolve(null)}),defer.promise}return loader.$inject=["$q","ordersFactory"],loader}return getIncompleteOrder()});

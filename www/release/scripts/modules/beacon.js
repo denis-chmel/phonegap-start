@@ -1,0 +1,3 @@
+/*! Compiled on: Thu May 21 2015 08:13:23 */
+var fileVersion = "v1.0-4-f842d9e-dirty"; 
+"use strict";define(["angular"],function(angular){var beacon=angular.module("beacon",[]);beacon.factory("$beacon",function(){var eventListeners=[];return self.on=function(name,callback){eventListeners.push({name:name,callback:callback})},self.trigger=function(name,args){for(var i=0;i<eventListeners.length;i++)eventListeners[i].name==name&&eventListeners[i].callback(args)},self})});

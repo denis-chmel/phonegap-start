@@ -1,0 +1,3 @@
+/*! Compiled on: Mon Jun 23 2014 13:37:38 */
+var fileVersion = "v0.3.1-3-77cfb8c-dirty"; 
+"use strict";define(["modules/app"],function(app){app.factoryManager("wishlist",["config","$cachedResource","$rootScope",function(config,$cachedResource){return $cachedResource("wishes22",config.api+"/wishes/:id",{id:"@id"},{add:{method:"PATCH",authentication:!0},remove:{method:"PATCH",params:{action:"remove"},authentication:!0},query:{method:"GET",isArray:!0,authentication:!0}})}])});

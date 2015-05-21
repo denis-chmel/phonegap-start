@@ -19,28 +19,217 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
+
+<html lang="en" ng-controller="app" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths ng-scope">
+<head>
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<title>Hello World</title>
+
+	<style type="text/css">@charset "UTF-8";
+	[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide {
+		display: none !important;
+	}
+
+	ng\:form {
+		display: block;
+	}
+
+	.ng-animate-block-transitions {
+		transition: 0s all !important;
+		-webkit-transition: 0s all !important;
+	}
+
+	.ng-hide-add-active, .ng-hide-remove {
+		display: block !important;
+	}</style>
+	<meta charset="utf-8">
+	<title>Bask - Customized Take Out &amp; Delivery Recommendations</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<link href="/vendor/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<!--<link rel="stylesheet" href="/vendor/fancybox/source/jquery.fancybox.css?v=v1.0-4-f842d9e-dirty">-->
+	<!--<link rel="stylesheet" href="/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css?v=v1.0-4-f842d9e-dirty">-->
+	<link rel="shortcut icon" href="/release/img/favicon.ico">
+	<link href="http://fonts.googleapis.com/css?family=Asap" rel="stylesheet" type="text/css">
+</head>
+<body class="bg5 home show_splash" ng-class="{ show_splash: show_splash, 'bgEnabled': uiState &amp;&amp; uiState != 'home' &amp;&amp; uiState != 'landing' &amp;&amp; uiState != 'about' }" ontouchstart="">
+<!-- uiView: body -->
+<div ui-view="body" class="outer ng-scope" ng-class="{ noscroll : modal }">
+	<div class="wrapper loggedin" ng-class="{ 'open-cart' : showCart || alwaysShowCart, 'loggedin' : user, 'cartEnabled' : cartEnabled, 'open-filters' : openFilters &amp;&amp; !modal_filters_mode }" style="">
+		<div ng-hide="hideCart" class="ng-hide"><!-- uiView: cart -->
+			<div ui-view="cart" class="cart-container ng-scope" style="">
+				<div class="cart-sidebar ng-scope loggedin" ng-class="{ 'open-cart' : showCart, 'loggedin' : user, 'cartEnabled' : cartEnabled }">
+
+					<div class="header">
+						<h2>Your Order</h2>
+
+						<!-- ngIf: order && !global.below_order_minimum -->
+
+						<a class="close" ng-click="toggleCart(false)">
+							<i class="icon-cancel"></i>
+						</a>
+					</div>
+
+					<form name="cart_form" ng-class="{submitted: submitted}" ng-submit="placeOrder()" novalidate="" class="ng-valid ng-pristine">
+						<fieldset>
+
+							<div class="orderType">
+								<label><i class="icon-lock"></i> Order Type</label>
+								<!-- ngIf: cart.order_type !== 'Group' -->
+								<div class="select ng-scope ng-isolate-scope ng-pristine ng-valid" ng-if="cart.order_type !== 'Group'" name="orderType" ng-model="cart.order_type" fancy-default="Delivery" fancy-select="">
+
+									<span ng-bind-html="title" class="ng-binding">Delivery</span>
+									<ul ng-transclude="">
+										<li ng-class="{ 'selected': ngSelected, grayed: isOptionGrayed }" ng-transclude="" value="Delivery" fancy-option="" class="ng-isolate-scope">
+											<span class="ng-scope">Delivery</span></li>
+										<li ng-class="{ 'selected': ngSelected, grayed: isOptionGrayed }" ng-transclude="" value="Pickup" fancy-option="" class="ng-isolate-scope">
+											<span class="ng-scope">Pickup</span></li>
+									</ul>
+
+									<input type="hidden" name="orderType" ng-model="ngModel"></div>
+								<!-- end ngIf: cart.order_type !== 'Group' -->
+								<!-- ngIf: cart.order_type == 'Group' -->
+							</div>
+
+							<!-- ngIf: cart.order_type != 'Pickup' -->
+							<div class="address ng-scope" ng-if="cart.order_type != 'Pickup'">
+								<label><i class="icon-location"></i> Address</label>
+								<!-- ngIf: user.address --><span class="value ng-binding ng-scope" ng-if="user.address">747 3rd Avenue 10th floor<br>New York, NEW YORK</span><!-- end ngIf: user.address -->
+								<!-- ngIf: !user.address -->
+							</div>
+							<!-- end ngIf: cart.order_type != 'Pickup' -->
+
+							<!-- ngIf: cart.order_type != 'Group' -->
+							<div class="address ng-scope" ng-if="cart.order_type != 'Group'">
+								<label><i class="icon-phone"></i> Phone Number</label>
+								<input class="input ng-valid ng-valid-required ng-pristine" type="tel" name="phone" ng-model="user.address.phone" mask="(999) 999-9999" required="">
+							</div>
+							<!-- end ngIf: cart.order_type != 'Group' -->
+
+							<!--
+							<div class="deliverytime">
+								<label><i class="icon-deliverytime"></i> Delivery Time</label>
+								<select name="delivertytime" ng-model="deliverytime" fancy-default="ASAP" fancy-select>
+									<option value="0" fancy-option>ASAP</option>
+									<option value="60" fancy-option>in an hour</option>
+								</select>
+							</div>
+							-->
+
+						</fieldset>
+
+						<section class="details" id="cart-order-details">
+							<h3>Order Details</h3>
+
+							<!-- ngIf: !order.id -->
+							<p ng-if="!order.id" class="ng-scope">There is nothing in your bag.</p>
+							<!-- end ngIf: !order.id -->
+
+							<ul>
+								<!-- ngRepeat: item in order.items -->
+							</ul>
+						</section>
+
+						<!-- ngIf: order.id -->
+
+						<section ng-show="order.id" class="total ng-hide">
+
+							<h3>
+								Total <span class="ng-binding">$0.00</span>
+							</h3>
+
+							<!-- ngIf: global.below_order_minimum -->
+
+							<!-- ngIf: order.total && !global.below_order_minimum -->
+
+							<!-- ngIf: !global.below_order_minimum -->
+							<button type="submit" ng-class="{ 'enabled': cart_form.$valid }" ng-if="!global.below_order_minimum" class="ng-scope enabled">Place Order</button>
+							<!-- end ngIf: !global.below_order_minimum -->
+
+							<div class="disclaimer ng-binding">You will be charged via delivery.com</div>
+
+							<!-- ngIf: order.id -->
+
+						</section>
+
+					</form>
+				</div>
+			</div>
+		</div>
+		<header class="header-main show_splash" ng-class="{ show_splash: show_splash }" style=""><h1 class="logo">
+			<a class="logo" ui-sref="primary.home" href="/"></a></h1></header>
+		<!-- uiView: layout -->
+		<div ui-view="layout" id="layout" class="ng-scope" style=""><!-- /app/src/views/layouts/primary.html -->
+
+			<!-- uiView: main -->
+			<div class="container ng-scope" autoscroll="false" ui-view="main"><!-- /app/src/views/home/index.html -->
+				<div class="home ng-scope">
+
+					<div class="map">
+						<!-- ngIf: params.map_url -->
+						<iframe ng-if="params.map_url" height="1501" ng-style="{ 'margin-top': params.map_top }" frameborder="0" style="border: 0px; margin-top: -461px;" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB70RW4l7CERbOLPANGY2_sKEphyluBXOk&amp;zoom=14&amp;q=50.3989609,30.521027999999998" class="ng-scope">
+						</iframe>
+						<!-- end ngIf: params.map_url -->
+					</div>
+
+					<div class="intro">
+
+						<p>What would you like to eat?</p>
+
+						<form class="ng-pristine ng-invalid ng-invalid-required">
+							<div class="input-search">
+								<input class="text input-search ng-pristine ng-invalid ng-invalid-required" name="search" type="text" ng-model="search" placeholder="" value="" tabindex="1" required="">
+							</div>
+							<button type="submit" tabindex="3">Search</button>
+							&nbsp;&nbsp;or&nbsp;&nbsp;<a ui-sref="primary.dishes" class="get-recs-link" href="/dishes">Get recommendations</a>
+						</form>
+
+						<!-- ngIf: !user -->
+
+					</div>
+
+				</div>
+			</div>
+
+			<!-- ngIf: login_now_tour -->
+		</div>
+		<footer class="main loggedin" ng-class="{ 'open-cart' : showCart, 'loggedin' : user, 'loaded' : loaded, 'cartEnabled' : cartEnabled }">
+			<div class="row">
+				<a class="button col-xs-3 active" ng-class="{ active: route_name == 'primary.home' }" ui-sref="primary.home" href="/"><i class="fa fa-search"></i>
+
+					<p>Search</p>
+				</a>
+				<a class="button col-xs-3" ng-class="{ active: route_name == 'primary.dishes' }" ui-sref="primary.dishes" href="/dishes"><i class="fa fa-thumbs-up"></i>
+
+					<p>Discover</p>
+				</a> <a class="button col-xs-3"><i class="fa fa-user"></i>
+
+				<p>Profile</p>
+			</a>
+				<a class="button col-xs-3" ng-click="toggleCart()"><i class="fa fa-shopping-cart"><span class="badge">2</span></i>
+
+					<p>Bag</p>
+					<!--
+										<div class="cart active" ng-if="itemCount" ng-class="{ belowminimum: global.below_order_minimum }">
+											<a href="#" ng-click="toggleCart()"><i class="fa fa-shopping-cart"></i>{{ itemCount }}</span></a>
+										</div>
+										--></a></div>
+		</footer>
+	</div>
+</div>
+<div ng-transclude="" class="page-loading" ng-class="{ 'open-cart' : showCart}">
+	<div class="spinner ng-scope"></div>
+	<small class="ng-scope">loading</small>
+</div>
+<!--<script data-main="/release/scripts/main.js?v=v1.0-4-f842d9e-dirty" src="/vendor/requirejs/require.js?v=v1.0-4-f842d9e-dirty"></script>-->
+<div class="appError  ng-animate" ng-class="{ bounce: messageBounce }">
+	<div class="appError-inner ng-binding"><span ng-bind-html="error.message" class="ng-binding"></span><!-- ngIf: undo_alert_action --><i ng-click="closeMessage()">x</i>
+	</div>
+</div>
+<textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea>
+</body>
 </html>

@@ -1,0 +1,3 @@
+/*! Compiled on: Thu May 21 2015 08:13:23 */
+var fileVersion = "v1.0-4-f842d9e-dirty"; 
+"use strict";define(["usersFactory"],function(){function getCurrentUser(){function loader($q,usersFactory,$beacon){return $beacon.on("authentication.change",function(){defer=null}),defer?defer.promise:(defer=$q.defer(),usersFactory.getCurrentUserFromAPI().then(function(user){defer.resolve(user)},function(){defer.resolve(null)}),defer.promise)}return loader.$inject=["$q","usersFactory","$beacon"],loader}var defer;return getCurrentUser()});

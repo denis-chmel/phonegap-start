@@ -1,0 +1,3 @@
+/*! Compiled on: Wed Aug 13 2014 17:54:58 */
+var fileVersion = "v0.7.1-6-984b474-dirty"; 
+"use strict";define(["modules/app"],function(app){app.controllerManager("dishDislikeCtrl",["$scope","$modalInstance",function($modalScope,$modalInstance){$modalScope.dish=dish,$(window).off("resize.dislikeDialog").on("resize.dislikeDialog",function(){$modalScope.choicesHeight=window.innerHeight-300}).resize(),$modalScope.submit=function(){$scope.dislike(dish),$modalInstance.close()}}])});

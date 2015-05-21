@@ -1,0 +1,3 @@
+/*! Compiled on: Mon Aug 04 2014 20:13:06 */
+var fileVersion = "v0.6.0-30-f3af40f-dirty"; 
+"use strict";define(["modules/app"],function(app){app.factoryManager("restaurantsFactory",["config","$q","$resource",function(config,$q,$resource){var self=this;self.getAll=function(address,cuisine){var deferred=$q.defer(),location=address.address+" "+address.city+" "+address.state+" "+address.zip;return resource.get({location:location,cuisine_id:cuisine.id||null},function(results){deferred.resolve(results)}),deferred.promise};var resource=$resource(config.api+"/restaurants",{id:"@id"},{get:{method:"GET",isArray:!0,authentication:!0}});return self}])});

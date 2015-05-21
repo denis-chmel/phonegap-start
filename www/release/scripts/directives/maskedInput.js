@@ -1,0 +1,3 @@
+/*! Compiled on: Thu May 21 2015 08:13:23 */
+var fileVersion = "v1.0-4-f842d9e-dirty"; 
+"use strict";define(["modules/app","jqueryMaskedInput"],function(app){app.directiveManager("mask",["$timeout",function(){return{require:"ngModel",restrict:"A",link:function($scope,element,$attrs,ngModel){$scope.$watch(function(){return ngModel.$viewValue},function(newValue){element.mask($attrs.mask,{completed:function(){$(this).trigger("change")}}),newValue&&ngModel.$setViewValue(element.mask())})}}}])});
